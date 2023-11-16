@@ -62,9 +62,9 @@ content = st_quill(
     key="quill",
 )
 
-            # if content:
-            #     st.subheader("Content")
-            #     st.text(content)
+if content:
+    st.subheader("Content")
+    st.text(content)
 
 #EXAMPE QUILL
 #https://okld-gallery.streamlit.app/?p=quill-editor
