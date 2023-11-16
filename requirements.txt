@@ -61,6 +61,7 @@ SQLAlchemy==2.0.22
 st-pages==0.4.5
 streamlit_quill
 streamlit==1.28.0
+streamlit_chat
 tenacity==8.2.3
 tokenizers==0.14.1
 toml==0.10.2
