@@ -1,3 +1,6 @@
+import streamlit as st
+st.set_page_config(page_title="Analyst copilot", page_icon="📖", layout="wide", initial_sidebar_state="expanded")
+
 from functions.set_session_variables import *
 from components.sidebar import *
 from components.us.us_buttons import *

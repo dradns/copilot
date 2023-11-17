@@ -9,7 +9,7 @@ logo_human = "https://i.postimg.cc/QdbnMMkd/analyst-ava.png"
 logo_robot = "https://i.postimg.cc/L8sGLRb6/logo2.png"
 def st_sidebar():
     # j = 20000
-    st.set_page_config(page_title="Analyst copilot", page_icon="📖", layout="wide", initial_sidebar_state="expanded")
+
 
     with st.sidebar:
         for item in st.session_state.chat_history:
