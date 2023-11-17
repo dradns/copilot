@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from components.sidebar import sidebar
+from components.sidebar import st_sidebar
 from locals.prompt import *
 from locals.content import *
 from streamlit_quill import st_quill
@@ -8,7 +8,6 @@ from streamlit_quill import st_quill
 lc = Content()
 pt = Prompt()
 
-api_key = st.session_state.get("API_KEY")
 def default_language():
     if st.session_state["LANGUAGE"] == 'RUS':
         return ['Русский', 'English']

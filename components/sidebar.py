@@ -1,60 +1,43 @@
-import streamlit as st
-#from dotenv import load_dotenv
 import os
+import time
+import streamlit as st
+import streamlit.components.v1 as components
+from streamlit_chat import message
+from functions.on_click import *
 
-#load_dotenv()
+logo_human = "https://i.postimg.cc/QdbnMMkd/analyst-ava.png"
+logo_robot = "https://i.postimg.cc/L8sGLRb6/logo2.png"
+def st_sidebar():
+    # j = 20000
+    st.set_page_config(page_title="Analyst copilot", page_icon="📖", layout="wide", initial_sidebar_state="expanded")
 
-def sidebar():
     with st.sidebar:
-        st.markdown(
-            "# Business requirements\n"
-            "1. Вот так оформляется [Ссылка](https://platform.openai.com/account/api-keys) below🔑\n"  # noqa: E501
-            "2. Upload a pdf, docx, or txt file📄\n"
-            "3. Ask a question about the document💬\n"
-        )
+        for item in st.session_state.chat_history:
+            # message(st.session_state['questions'][0], is_user=False, key=j)
+            # message(st.session_state['responses'][0], is_user=True, key=j + 1)
+            message("check", is_user=True, logo=logo_human)
+            message("pong", is_user=False, logo=logo_robot)
+            #j += 7
 
-        st.markdown("---")
-
-
-        st.markdown("# System requirements")
-        st.markdown(
-            "📖KnowledgeGPT allows you to ask questions about your "
-            "documents and get accurate answers with instant citations. "
-        )
-        st.markdown(
-            "This tool is a work in progress. "
-            "You can contribute to the project on [GitHub](https://github.com/mmz-001/knowledge_gpt) "  # noqa: E501
-            "with your feedback and suggestions💡"
-        )
-        st.markdown("Made by [mmz_001](https://twitter.com/mm_sasmitha)")
-        st.markdown("---")
-
-        st.markdown("# Acceptance criteria")
-        st.markdown(
-            "📖KnowledgeGPT allows you to ask questions about your "
-            "documents and get accurate answers with instant citations. "
-        )
-        st.markdown(
-            "This tool is a work in progress. "
-            "You can contribute to the project on [GitHub](https://github.com/mmz-001/knowledge_gpt) "  # noqa: E501
-            "with your feedback and suggestions💡"
-        )
-        st.markdown("Made by [mmz_001](https://twitter.com/mm_sasmitha)")
-        st.markdown("---")
-
-        st.markdown(
-            "# Settings\n"
-            "Enter your API key below🔑\n"  # noqa: E501
-        )
-        api_key_input = st.text_input(
-            "API Key",
-            type="password",
-            placeholder="Paste your API key here",
-            help="You can get your API key from https://platform.openai.com/account/api-keys",  # noqa: E501
-            value=os.environ.get("API_KEY", None)
-            or st.session_state.get("API_KEY", ""),
-        )
+        with st.spinner("Loading..."):
+            st.success("Done!")
+            st.text_input('', key=776655567, on_change=clear_text)
+            #st.text_area('', key='widget12', on_change=clear_text, label="1")
+            st.button("Clear message", on_click=on_btn_click,key=58930)
 
 
-        st.session_state["API_KEY"] = api_key_input
-
+# st.markdown("""
+# <style>
+#     [data-testid=stSidebar] {
+#         background-color: #ff000050;
+#     }
+# </style>
+# """, unsafe_allow_html=True)
+#
+# st.markdown("""
+# <style>
+#     [data-testid=stChatInput] {
+#         background-color: #ff000050;
+#     }
+# </style>
+# """, unsafe_allow_html=True)
