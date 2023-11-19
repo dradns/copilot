@@ -1,6 +1,6 @@
 import streamlit as st
 import anthropic
-from components.sidebar import sidebar
+from components.sidebar import *
 
 from st_pages import Page, show_pages, Section, add_page_title
 add_page_title()
@@ -18,8 +18,7 @@ question = st.text_input(
     disabled=not uploaded_file,
 )
 
-sidebar()
-
+st_sidebar()
 with st.expander("See explanation"):
     st.write("hop pa")
 

@@ -89,14 +89,14 @@ with col14:
 
 
 
-col23, col24 = st.columns([7,3])
+col23, col24 = st.columns([3,7])
 
 def render_dialog():
     for message in st.session_state.messages_us:
         with st.chat_message(message["role"]):
             st.write(message["content"])
 
-with col23:
+with col24:
     content = st_quill(
         placeholder="Write your text here",
         value=st.session_state['content_us'],
@@ -105,7 +105,7 @@ with col23:
         key="quill234234",
     )
 # Store LLM generated responses
-with col24:
+with col23:
     if "messages_us" not in st.session_state.keys():
         st.session_state.messages_us = [{"role": "assistant", "content": lc.gt("user-story-ass-first-reply")}]
 

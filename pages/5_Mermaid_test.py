@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from components.sidebar import sidebar
+from components.sidebar import *
 #import streamlit_mermaid as stmd
 from functions.stmd import st_mermaid
 
@@ -10,7 +10,7 @@ st.set_page_config(page_title="Analyst copilot", page_icon="📖", layout="wide"
 # Enable caching for expensive functions
 #bootstrap_caching()
 
-sidebar()
+st_sidebar()
 
 code = """
 sequenceDiagram

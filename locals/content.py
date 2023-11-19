@@ -16,7 +16,7 @@ class Content:
         "user-story-typical-mistakes": "Typical mistakes 🚨",
         "user-story-lets-write": "Are you ready to write couple of user stories?",
         "user-story-button-forget": "Forget context",
-        "user-story-ass-first-reply": "I'm best business analyst ever! Wanna help?",
+        "user-story-ass-first-reply": "I'm your copilot! Wanna help?",
 
         # USE CASE PAGE
         "use-case-title": "Use case",
@@ -53,7 +53,7 @@ class Content:
         "user-story-typical-mistakes": "Типичные ошибки 🚨",
         "user-story-lets-write": "Готов написать пару пользовательских историй?",
         "user-story-button-forget": "Забыть контекст",
-        "user-story-ass-first-reply": "Я лучший бизнес аналитик! Давай помогу?",
+        "user-story-ass-first-reply": "Я твой копайлот! Давай помогу?",
 
         # USE CASE PAGE
         "use-case-title": "Cценарий использования",

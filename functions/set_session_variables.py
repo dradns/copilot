@@ -23,4 +23,8 @@ def set_session_variables():
     if "chat_history" not in st.session_state.keys():
         st.session_state.chat_history = [{"role": "assistant", "content": lc.gt("user-story-ass-first-reply")}]
 
+    if "user_input" not in st.session_state.keys():
+        st.session_state["user_input"] = ""
 
+    if "global_key_counter" not in st.session_state.keys():
+        st.session_state["global_key_counter"] = 40000

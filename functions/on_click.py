@@ -9,9 +9,14 @@ def clear_chat_history():
     if 'messages_us' not in st.session_state:
         st.session_state['messages_us'] = [{"role": "assistant", "content": lc.gt("user-story-ass-first-reply")}]
 
-def clear_text():
-    st.session_state.my_text = st.session_state.widget
-    st.session_state.widget = ""
+def append_and_clear():
+    st.session_state.my_text = st.session_state.user_input
+    print(st.session_state.my_text + "\n st.session_state.my_text \n")
+    print(st.session_state.user_input + "\n st.session_state.user_input \n")
+    st.session_state.chat_history.append({"role": "user", "content": st.session_state["my_text"]})
+    st.session_state.user_input = ""
+    st.session_state.my_text = ""
+
 def on_input_change():
     user_input = st.session_state.user_input
     st.session_state.responses.append(user_input)

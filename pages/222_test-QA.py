@@ -1,6 +1,6 @@
 import os
 import streamlit as st
-from components.sidebar import sidebar
+from components.sidebar import *
 from functions.LLM_model import *
 from huggingface_hub import InferenceClient
 from locals.prompt import *
@@ -81,7 +81,7 @@ st.button(lc.gt("user-story-button-forget"), on_click=clear_chat_history)
 # Enable caching for expensive functions
 #bootstrap_caching()
 # Render sidebar
-sidebar()
+st_sidebar()
 
 #st.session_state["API_KEY"] = 'r8_5dXks0XSi27sUU4zxiCeKiYOB1wvfil3UZOxV'
 #replicate_api = st.session_state.get("API_KEY")

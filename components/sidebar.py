@@ -4,40 +4,32 @@ import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_chat import message
 from functions.on_click import *
+from functions.clear_chat_history import *
+from functions.render_chat import *
+from locals.prompt import *
+from locals.content import *
+from functions.LLM_model import *
 
-logo_human = "https://i.postimg.cc/QdbnMMkd/analyst-ava.png"
-logo_robot = "https://i.postimg.cc/L8sGLRb6/logo2.png"
+lc = Content()
+pt = Prompt()
+
+page_name = "chat-history"
+
 def st_sidebar():
-    # j = 20000
-
+    if "chat_history" not in st.session_state.keys():
+        st.session_state.chat_history = [{"role": "assistant", "content": lc.gt("user-story-ass-first-reply")}]
 
     with st.sidebar:
-        for item in st.session_state.chat_history:
-            # message(st.session_state['questions'][0], is_user=False, key=j)
-            # message(st.session_state['responses'][0], is_user=True, key=j + 1)
-            message("check", is_user=True, logo=logo_human)
-            message("pong", is_user=False, logo=logo_robot)
-            #j += 7
+        render_chat()
 
-        with st.spinner("Loading..."):
-            st.success("Done!")
-            st.text_input('', key=776655567, on_change=clear_text)
-            #st.text_area('', key='widget12', on_change=clear_text, label="1")
-            st.button("Clear message", on_click=on_btn_click,key=58930)
+        if st.session_state.chat_history[-1]["role"] != "assistant":
+            with st.spinner(lc.gt("thinking")):
+                response = modell_call("who ou")
+                print(response)
+                st.session_state.chat_history.append({"role": "assistant", "content": response})
+                message(st.session_state.chat_history[-1]["content"], is_user=False, logo=logo_robot, key=st.session_state.get("global_key_counter")+500000)
 
+        if user_prompt := st.text_input('', key='user_input', on_change=append_and_clear):
+            pass
 
-# st.markdown("""
-# <style>
-#     [data-testid=stSidebar] {
-#         background-color: #ff000050;
-#     }
-# </style>
-# """, unsafe_allow_html=True)
-#
-# st.markdown("""
-# <style>
-#     [data-testid=stChatInput] {
-#         background-color: #ff000050;
-#     }
-# </style>
-# """, unsafe_allow_html=True)
+        st.button(lc.gt("user-story-button-forget"), on_click=clear_chat_history, type="primary", key=1010)
