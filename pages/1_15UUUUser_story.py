@@ -66,28 +66,21 @@ if "content_us" not in st.session_state.keys():
     st.session_state.content_us = ""
 
 st.session_state['content_us'] = "Can you tell me a little bit about the system you're looking to improve? What is the main goal you want to achieve with this system? And what kind of user are you? For example, are you an administrator, a manager, or an end-user?"
-
-col13, col14 = st.columns([8,2])
-with col13:
-    content = st_quill(
-        placeholder="Write your text here",
-        value=st.session_state['content_us'],
-        # html= st.checkbox("Return HTML", False),
-        # readonly=checkbox("Read only", False),
-        key="quill",
-    )
-
-with col14:
-    st.button("Сохранить", on_click=clear_chat_history, type="primary", key=1011)
-    st.button("Улучшить", on_click=clear_chat_history, type="primary", key=1012)
-    st.button("Создать UC", on_click=clear_chat_history, type="primary", key=1013)
-
-
-
-
-
-
-
+#
+# col13, col14 = st.columns([8,2])
+# with col13:
+#     content = st_quill(
+#         placeholder="Write your text here",
+#         value=st.session_state['content_us'],
+#         # html= st.checkbox("Return HTML", False),
+#         # readonly=checkbox("Read only", False),
+#         key="quill",
+#     )
+#
+# with col14:
+#     st.button("Сохранить", on_click=clear_chat_history, type="primary", key=1011)
+#     st.button("Улучшить", on_click=clear_chat_history, type="primary", key=1012)
+#     st.button("Создать UC", on_click=clear_chat_history, type="primary", key=1013)
 
 col23, col24 = st.columns([3,7])
 
@@ -110,28 +103,26 @@ with col23:
         st.session_state.messages_us = [{"role": "assistant", "content": lc.gt("user-story-ass-first-reply")}]
 
 
-
 # USAGE BUTTON RESET HISTORY
     st.button(lc.gt("user-story-button-forget"), on_click=clear_chat_history, type="primary", key=1010)
     render_dialog()
-    st.text_input('', key=776667)
-    st.text_area('', key=777777)
+    #st.text_input('', key=776667)
+    #st.text_area('', key=777777)
 
 #append user message to global
-if user_prompt := st.chat_input():
-    st.session_state.messages_us.append({"role": "user", "content": user_prompt})
-
+    if user_prompt := st.chat_input():
+        st.session_state.messages_us.append({"role": "user", "content": user_prompt})
 
 # Generate a new response if last message is not from assistant
-if st.session_state.messages_us[-1]["role"] != "assistant":
-    with st.chat_message("assistant"):
-        with st.spinner(lc.gt("thinking")):
-            response = model_response(user_prompt, page_name)
-            placeholder = st.empty()
-            full_response = ''
-            for item in response:
-                full_response += item
+    if st.session_state.messages_us[-1]["role"] != "assistant":
+        with st.chat_message("assistant"):
+            with st.spinner(lc.gt("thinking")):
+                response = model_response(user_prompt, page_name)
+                placeholder = st.empty()
+                full_response = ''
+                for item in response:
+                    full_response += item
+                    placeholder.markdown(full_response)
                 placeholder.markdown(full_response)
-            placeholder.markdown(full_response)
-    message = {"role": "assistant", "content": full_response}
-    st.session_state.messages_us.append(message)
+        message = {"role": "assistant", "content": full_response}
+        st.session_state.messages_us.append(message)
