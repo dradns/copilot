@@ -21,7 +21,7 @@ def model_response(user_prompt, page_name):
     print('--------------')
     return modell_call(total_string)
 
-endpoint_url = "https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-chat-hf"
+endpoint_url = "https://api-inference.huggingface.co/models/meta-llama/Llama-2-70b-chat-hf"
 hf_token = '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'
 
 client = InferenceClient(endpoint_url, token=hf_token)
