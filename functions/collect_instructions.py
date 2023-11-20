@@ -19,8 +19,16 @@ def collect_instructions(page_name):
         return collect_instructions_uc()
     elif page_name == "acceptance-criteria":
         return collect_instructions_ac()
+    elif page_name == "chat":
+        return collect_instructions_ch()
 
+def collect_instructions_ch():
+    chat_role = pt.gp("chat-role")
+    do_not_pretend = pt.gp("do-not-pretend")
+    length_instruction = pt.gp("chat-length-instructions")
+    string_instructions = chat_role + do_not_pretend+ length_instruction
 
+    return string_instructions
 def collect_instructions_us():
     user_story_role = pt.gp("user-story-role")
     do_not_pretend = pt.gp("do-not-pretend")

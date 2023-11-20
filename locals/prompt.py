@@ -7,6 +7,10 @@ class Prompt:
         "do-not-pretend": "Do not respond as 'User' or pretend to be 'User'. You only respond once as 'Assistant'.\n",
         "language-instruction":"Answer only on English.\n",
 
+        #CHAT
+        "chat-role": "You are helpful business and system analyst. You should help User to answer for his questions from your role.\n",
+        "chat-length-instructions": "You must answer in the format No more than ONE paragraph.\n",
+
         #USER STORY PAGE
         "user-story-role": "You are business analyst. You should help User to write User Story.\n",
         "user-story-description": "User story its a short simple system description of the functionality, described on behalf of a PERSON who wants to get new features of the system.\n",
@@ -47,6 +51,10 @@ class Prompt:
         # TOOLS
         "do-not-pretend": "Не отвечай от лица 'Пользователь' и не притворяйся 'Пользователь'. Ты будешь отвечать только как 'Ассистент'.\n",
         "language-instruction": "Отвечай ТОЛЬКО на РУССКОМ языке.\n",
+
+        # CHAT
+        "chat-role": "Ты в роли бизнес системного аналитика. Ты должен отвечать на вопросы Пользователя исходя из своей роли.\n",
+        "chat-length-instructions": "Ты должен ответить не больше чем одним параграфом.\n",
 
         # USER STORY PAGE
         "user-story-role": "Ты в роли бизнес аналитика. Помоги пользователю написать Пользовательскую Историю.\n",

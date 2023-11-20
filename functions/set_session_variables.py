@@ -28,3 +28,6 @@ def set_session_variables():
 
     if "global_key_counter" not in st.session_state.keys():
         st.session_state["global_key_counter"] = 40000
+
+    if "temp_input" not in st.session_state.keys():
+        st.session_state["temp_input"] = ""

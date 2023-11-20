@@ -8,4 +8,4 @@ pt = Prompt()
 def clear_chat_history():
     del st.session_state["chat_history"]
     if 'chat_history' not in st.session_state:
-        st.session_state['messages_us'] = [{"role": "assistant", "content": lc.gt("user-story-ass-first-reply")}]
+        st.session_state['chat_history'] = [{"role": "assistant", "content": lc.gt("user-story-ass-first-reply")}]
