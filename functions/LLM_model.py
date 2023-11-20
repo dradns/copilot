@@ -7,6 +7,20 @@ from huggingface_hub import InferenceClient
 from functions.collect_instructions import *
 from functions.collect_message_history import *
 
+#Responses for a chat
+def model_chat_response(user_input, page_name):
+    #1. собрать взять нужную инструкцию в зависимости от языка
+    #2. собрать историю сообщений
+
+    # Collect instructions for page_name
+    string_instructions = collect_instructions(page_name)
+    #Сollect whole message history
+    string_dialogue = collect_message_history(user_input, page_name)
+    total_string = string_instructions + string_dialogue
+    print(total_string)
+    print('--------------')
+    return modell_call(total_string)
+
 #collecting context
 def model_response(user_prompt, page_name):
     #1. собрать взять нужную инструкцию в зависимости от языка
@@ -21,7 +35,7 @@ def model_response(user_prompt, page_name):
     print('--------------')
     return modell_call(total_string)
 
-endpoint_url = "https://api-inference.huggingface.co/models/meta-llama/Llama-2-70b-chat-hf"
+endpoint_url = "https://api-inference.huggingface.co/models/meta-llama/Llama-2-7b-chat-hf"
 hf_token = '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'
 
 client = InferenceClient(endpoint_url, token=hf_token)

@@ -12,7 +12,7 @@ def map_session_state(page_name):
         return st.session_state.messages_uc
     elif page_name == 'acceptance-criteria':
         return st.session_state.messages_ac
-    elif page_name == 'chat-history':
+    elif page_name == 'chat':
         return st.session_state.chat_history
 
 #collecting context

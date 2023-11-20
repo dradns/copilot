@@ -1,13 +1,7 @@
-import os
-import time
-import streamlit as st
-import streamlit.components.v1 as components
-from streamlit_chat import message
+
 from functions.on_click import *
 from functions.clear_chat_history import *
 from functions.render_chat import *
-from locals.prompt import *
-from locals.content import *
 from functions.LLM_model import *
 
 lc = Content()
